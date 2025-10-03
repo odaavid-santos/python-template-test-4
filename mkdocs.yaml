@@ -1,0 +1,11 @@
+site_name: "python-template-test-4"
+site_description: "Main documentation for Backstage features and framework APIs"
+repo_url: https://github.com/daviidsantos/python-template-test-4
+edit_uri: edit/main/docs
+
+plugins:
+  - techdocs-core
+
+nav:
+  - Overview:
+      - Getting Started: "docs/index.md"

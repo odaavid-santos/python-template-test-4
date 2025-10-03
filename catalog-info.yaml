@@ -1,0 +1,13 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: python-template-test-4
+  description: Testing my python template
+  annotations:
+    github.com/project-slug: daviidsantos/python-template-test-4
+    backstage.io/techdocs-ref: dir:.
+
+spec:
+  type: service
+  owner: dx-platforms
+  lifecycle: experimental

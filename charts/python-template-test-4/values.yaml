@@ -1,0 +1,65 @@
+replicaCount: 1
+image:
+  repository: odaavidsantos/python-template-test-4
+  pullPolicy: IfNotPresent
+  tag: python-template-test-4-dev-latest
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+serviceAccount:
+  create: false
+  automount: true
+  annotations: {}
+  name: ""
+podAnnotations: {}
+podLabels: {}
+podSecurityContext: {}
+securityContext: {}
+service:
+  type: ClusterIP
+  port: 5000
+ingress:
+  enabled: true
+  className: "nginx"
+  annotations: {}
+  hosts:
+    - host: python-template-test-4-dev.test.com
+      paths:
+        - path: /
+          pathType: Prefix
+  tls: []
+resources:
+  requests:
+    cpu: 50m
+    memory: 50M
+httpRoute:
+  enabled: false
+  annotations: {}
+  parentRefs:
+    - name: gateway
+      sectionName: http
+  hostnames:
+    - chart-example.local
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /headers
+livenessProbe:
+  httpGet:
+    path: /api/v1/healthz
+    port: http
+readinessProbe:
+  httpGet:
+    path: /api/v1/healthz
+    port: http
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+volumes: []
+volumeMounts: []
+nodeSelector: {}
+tolerations: []
+affinity: {}
